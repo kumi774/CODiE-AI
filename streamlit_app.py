@@ -1,4 +1,3 @@
-import time
 import streamlit as st
 
 st.title("CodieAI") 
@@ -32,18 +31,29 @@ with tab1:
 
 with tab3:
     st.write("CodieAI is just a concept until now, and yet to be really worked on. And in a near future, we might be bringing this idea to life!")
-    st.write("WEBSEARCH programmed by Danny Z. , concept by Levi W. As of right now,  this project is open source, and it's repository can be found here https://github.com/kumi774/CODiE-AI, if you must use, modify, remix, copy, or re-destribute this project, please credit our original work."
-    "This project is under the CC BY-NC 4.0 license, learn more here https://creativecommons.org/licenses/by-nc/4.0/.")
+    st.write("WEBSEARCH programmed by Danny Z. , concept by Levi W. As of right now,  this project is open source, and it's repository can be found here https://github.com/kumi774/CODiE-AI, if you must use, modify, remix, copy, or re-destribute this project, please credit our original work.")
     st.write("'magnifying_glass_icon.svg' is a copyright free work, available at https://commons.wikimedia.org/wiki/File:Magnifying_glass_icon.svg")
+    st.write("This project is under the CC BY-NC 4.0 license, learn more here https://creativecommons.org/licenses/by-nc/4.0/.")
 
-COOLDOWN = 0
+#stupid buisness tech thing
 
 with tab2:
         st.write("If you want to report a website, please don't hesitate, report it when you feel like you need.")
         WEBREPORT = st.text_input("Report a website here")
         st.write("If you want to report more than one site, please seperate them with a comma (,)")
         if "https://" not in WEBREPORT:
-            st.write("please add 'https://' to the beginning of the link")
+            if WEBREPORT in safe_websites and WEBREPORT in scary_websites and WEBREPORT in Threats_possible:
+                st.write("this website has been registered already")
+            if WEBREPORT not in safe_websites and WEBREPORT not in scary_websites and WEBREPORT not in Threats_possible:
+                if "," not in WEBREPORT:
+                    st.write(f"Thank you for reporting {WEBREPORT}, we will look into it as soon as possible.")
+                    with open("reported_sites.txt", "a") as f:
+                        f.write(f"{WEBREPORT} is to be reviewed\n")
+                if "," in WEBREPORT:
+                    st.write("These website will probably be reviewed soon :3")
+                    with open("reported_sites.txt", "a") as f:
+                        for site in WEBREPORT.split(", "):
+                            f.write(f"{site} is to be reviewed\n")
         if "https://" in WEBREPORT:
             if WEBREPORT != "":
                 if WEBREPORT in safe_websites and WEBREPORT in scary_websites and WEBREPORT in Threats_possible:
