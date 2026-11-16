@@ -58,4 +58,3 @@ with tab2:
                         with open("reported_sites.txt", "a") as f:
                             for site in WEBREPORT.split(", "):
                                 f.write(f"{site} is to be reviewed\n")
-)
