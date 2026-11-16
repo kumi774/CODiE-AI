@@ -46,9 +46,9 @@ with tab2:
                 st.write("this website has been registered already")
             if WEBREPORT not in safe_websites and WEBREPORT not in scary_websites and WEBREPORT not in Threats_possible:
                 if "," not in WEBREPORT:
-                    st.write(f"Thank you for reporting {WEBREPORT}, we will look into it as soon as possible.")
+                    st.write(f"Thank you for reporting https://{WEBREPORT}, we will look into it as soon as possible.")
                     with open("reported_sites.txt", "a") as f:
-                        f.write(f"{WEBREPORT} is to be reviewed\n")
+                        f.write(f"https://{WEBREPORT} is to be reviewed\n")
                 if "," in WEBREPORT:
                     st.write("These website will probably be reviewed soon :3")
                     with open("reported_sites.txt", "a") as f:
